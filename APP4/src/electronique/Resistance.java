@@ -15,7 +15,6 @@ public class Resistance extends Composant{
     }
 
     public double calculerResistance(){
-        double resistancetot += double resistance;
-        return resistancetot;
+        return resistance;
     }
 }

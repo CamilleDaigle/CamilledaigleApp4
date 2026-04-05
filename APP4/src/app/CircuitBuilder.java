@@ -11,7 +11,7 @@ import java.util.List;
 public class CircuitBuilder {
 
     private final static char fsep = File.separatorChar;
-    private static final String pathIn = System.getProperty("user.dir") + fsep + "APP4" + fsep + "src" + "donnees" +  fsep + "fichier_json" +  fsep;
+    private static final String pathIn = System.getProperty("user.dir") + fsep + "src" + "donnees" +  fsep + "fichier_json" +  fsep;
 
     public  CircuitBuilder() {
     }
@@ -19,13 +19,15 @@ public class CircuitBuilder {
     public Composant construireCircuit (String nomFichier) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            JsonNode composant = mapper.readTree(new File(pathIn+nomFichier));
-            String composantNom = composant.get("nomFichier").asText();
+            JsonNode racine = mapper.readTree(new File(pathIn+nomFichier));
+            JsonNode composant = racine.get("circuit");
+            return lireComposant(composant);
         }
         catch (IOException e) {
             System.out.println("Erreure de lecture: de la liste");
+            return null;
         }
-        return
+
     }
 
     private Composant lireComposant(JsonNode node){
@@ -48,7 +50,6 @@ public class CircuitBuilder {
             }
             return new CircuitParallele(composants);
             }
-        }
-        throw new IllegalArgumentException ("Type de circuit inconnu:" + type);
+        throw new IllegalArgumentException ("Type de circuit inconnu:" + typeCircuit);
     }
 }

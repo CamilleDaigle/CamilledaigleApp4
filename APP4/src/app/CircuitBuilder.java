@@ -13,7 +13,8 @@ public class CircuitBuilder {
     private final static char fsep = File.separatorChar;
     private static final String pathIn = System.getProperty("user.dir") + fsep + "src" + "donnees" +  fsep + "fichier_json" +  fsep;
 
-    public  CircuitBuilder() {
+    public CircuitBuilder(String path) {
+        construireCircuit(path);
     }
 
     public Composant construireCircuit (String nomFichier) {

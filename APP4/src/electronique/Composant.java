@@ -7,7 +7,7 @@ public abstract class Composant {
 
 
     public abstract double calculerResistance(){
-
+        double resitance = calculerResistance();
         return resistance;
     }
 }

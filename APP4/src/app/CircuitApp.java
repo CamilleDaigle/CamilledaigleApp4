@@ -29,8 +29,11 @@ public class CircuitApp {
         System.out.println();
         System.out.println("Que voulez vous faire?\n"+"R- Tester un autre fichier\n"+"Q- Quitter");
         String choix = sc.next();
-        if(choix==R){
-
+        if(choix=="R"){
+            CircuitApp app = new CircuitApp();
+        }
+        if(choix=="Q"){
+            System.exit(0);
         }
     }
 }

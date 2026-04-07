@@ -3,20 +3,10 @@ package electronique;
 import java.util.List;
 
 public abstract class Circuit extends Composant{
+
+    public List<Composant> composant;
+
     public Circuit(List<Composant> composants){
-        super(composants);
+        this.composant = composants;
     }
-
-    protected List<Composant> composants(){
-        for (Composant() comp : composants()){
-            if(comp == CircuitParallele){
-                CircuitParallele(comp());
-            }
-            if (comp == CircuitSerie){
-                CircuitSerie(comp());
-            }
-        }
-        return composants();
-    }
-
 }

@@ -14,6 +14,7 @@ public class Resistance extends Composant{
         this.resistance = resistance;
     }
 
+    @Override
     public double calculerResistance(){
         return resistance;
     }

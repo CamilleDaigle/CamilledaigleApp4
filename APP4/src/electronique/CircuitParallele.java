@@ -5,17 +5,20 @@ import java.util.List;
 public class CircuitParallele  extends Circuit{
 
     public CircuitParallele(List<Composant> composant){
-        super(composant);
-        for (Composant composant : composants()){
-           calculerResistance(composant);
-        }
+        super (composant);
+
     }
 
-    public double calculerResistance(List<Composant> composants){
+    @Override
+    public double calculerResistance(){
+        double formule = 0;
+        double total = 0;
 
-        double formule =0;
-        formule += (1/composants) + calculerResistance();
-        double total = 1/formule;
+        for (Composant c : this.composant){
+            formule += 1/c.calculerResistance();
+             total= 1/formule;
+        }
+
         return total;
     }
 }

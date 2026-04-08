@@ -7,14 +7,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CircuitBuilder {
 
     private final static char fsep = File.separatorChar;
-    private static final String pathIn = System.getProperty("user.dir") + fsep + "src" + "donnees" +  fsep + "fichier_json" +  fsep;
+    private static final String pathIn = System.getProperty("user.dir")+ fsep + "APP4" + fsep + "src" + fsep + "donnees" + fsep + "fichiers_json" + fsep;
 
-    public CircuitBuilder(String path) {
-        construireCircuit(path);
+    public CircuitBuilder() {
     }
 
     public Composant construireCircuit (String nomFichier) {
@@ -22,30 +22,29 @@ public class CircuitBuilder {
         try {
             JsonNode racine = mapper.readTree(new File(pathIn+nomFichier));
             JsonNode composant = racine.get("circuit");
-            return lireComposant(composant);
+            return  lireComposant(composant);
         }
         catch (IOException e) {
-            System.out.println("Erreure de lecture: de la liste");
+            System.out.println("Erreure de lecture de la liste");
             return null;
         }
-
     }
 
     private Composant lireComposant(JsonNode node){
         String typeCircuit = node.get("type").asText();
 
-        if(typeCircuit == "resistance"){
+        if(Objects.equals(typeCircuit, "resistance")){
             return new Resistance(node.get("valeur").asDouble());
         }
-        else if(typeCircuit == "serie"){
-            List<Composant> composants = new ArrayList<>();
+        else if(Objects.equals(typeCircuit, "serie")){
+            ArrayList<Composant> composants = new ArrayList<>();
             for (JsonNode composantNode : node.get("composants")) {
                 composants.add (lireComposant(composantNode));
             }
             return new CircuitSerie(composants);
         }
-        else if(typeCircuit == "parallele"){
-            List<Composant> composants = new ArrayList<>();
+        else if(Objects.equals(typeCircuit, "parallele")){
+            ArrayList<Composant> composants = new ArrayList<>();
             for (JsonNode composantNode : node.get("composants")) {
                 composants.add (lireComposant(composantNode));
             }

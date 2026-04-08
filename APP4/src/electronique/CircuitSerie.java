@@ -1,10 +1,11 @@
 package electronique;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CircuitSerie extends Circuit {
 
-    public CircuitSerie(List<Composant> composants) {
+    public CircuitSerie(ArrayList<Composant> composants) {
         super(composants);
     }
 

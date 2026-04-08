@@ -1,10 +1,11 @@
 package electronique;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CircuitParallele  extends Circuit{
 
-    public CircuitParallele(List<Composant> composant){
+    public CircuitParallele(ArrayList<Composant> composant){
         super (composant);
     }
 
@@ -14,8 +15,8 @@ public class CircuitParallele  extends Circuit{
         double total = 0;
 
         for (Composant c : this.composant){
-            formule += 1/c.calculerResistance();
-             total= 1/formule;
+            formule += (1/c.calculerResistance());
+             total= (1/formule);
         }
 
         return total;

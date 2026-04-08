@@ -6,7 +6,6 @@ public class CircuitParallele  extends Circuit{
 
     public CircuitParallele(List<Composant> composant){
         super (composant);
-
     }
 
     @Override

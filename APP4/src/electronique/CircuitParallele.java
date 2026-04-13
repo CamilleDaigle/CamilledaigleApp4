@@ -16,7 +16,7 @@ public class CircuitParallele  extends Circuit{
 
         for (Composant c : this.composant){
             formule += (1/c.calculerResistance());
-             total= (1/formule);
+            total = 1/formule;
         }
 
         return total;
